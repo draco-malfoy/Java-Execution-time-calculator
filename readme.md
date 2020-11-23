@@ -2,29 +2,17 @@
 
 Big notation has always been with us when we needed to determine which method/algorithm is time efficient.
 But sometimes, even after knowing the time complexity of methods doesn't provide satifaction to the need of 
-precise numbers to the actual execution time. 
+precise numbers to the actual execution time.
+
 Sometimes, we crave for the exact(not too exact) time taken or the time difference between two methods/algorithms.
 
 Although the resultant time may not be same all the time, depending upon JIT, warm-up phase, measurement phase, platorm under consideration, garbage collection time etc., this should give a pretty close results(atleast for comparing two codes with each other).
 
 Also read [Micro-Benchmarking Considered Harmful](https://web.archive.org/web/20190818002513/http://blogs.microsoft.co.il/sasha/2009/05/08/micro-benchmarking-considered-harmful/).
 
-## Integration steps:
+## Few ways to calculate elapsed time:
 
-## Contribute:
-
-You can contribute by logging issues or by improving the code.
-
-## References:
-
-https://stackoverflow.com
-https://javadevcentral.com/naive-benchmarking-framework-in-java
-
---================================================================================================
-
-## Possible ways to calculate elapsed time:
-
-### Native to Java library - Pre Java 8
+### Native to Java - Pre Java 8
 
 #### Calendar class
 
@@ -73,7 +61,7 @@ Both nanoTime and currentTimeInMillis have thier own pros and cons-
 5. System.currentTimeMillis() IS NOT a good approach for measuring the performance of algorithms, it measures the total time one experiences as a user watching the computer screen. It also includes time consumed by everything else running on ones computer in the background. This could make a huge difference in case one has a lot of programs running on your workstation.
 P.S: Refer to comments on [this](https://stackoverflow.com/a/180191) stackoverflow answer for more insights
 
-### Native to Java library - Post Java 8
+### Native to Java - Post Java 8
 
 #### Instant class
 
@@ -84,8 +72,9 @@ P.S: Refer to comments on [this](https://stackoverflow.com/a/180191) stackoverfl
     Duration between = Duration.between(start, end);
 
     System.out.println( between ); // PT1.001S
-    System.out.format("%dD, %02d:%02d:%02d.%04d \n", between.toDays(),
-        between.toHours(), between.toMinutes(), between.getSeconds(), between.toMillis()); // 0D, 00:00:01.1001 
+    System.out.format("%dD, %02d:%02d:%02d.%04d \n", between.toDays(),between.toHours(), 
+                                                    between.toMinutes(), between.getSeconds(), 
+                                                    between.toMillis()); // 0D, 00:00:01.1001 
 ```
 
 ### Third party library
@@ -128,3 +117,15 @@ Note: Almost all of these library are not thread-safe.
     System.out.println(millisToShortDHMS(timer.getTotalTimeMillis()));
 ```
 //Todo: add spring stopwatch other usefull methods
+
+## Integration steps:
+
+## Contribute:
+
+You can contribute by logging issues or by improving the code.
+
+## References:
+
+https://stackoverflow.com
+
+https://javadevcentral.com/naive-benchmarking-framework-in-java
